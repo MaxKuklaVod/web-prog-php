@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+select {
+    height: 36px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #f0fff0;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.admin-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.admin-link a {
+    color: #666;
+    text-decoration: none;
+}
+
+.admin-link a:hover {
+    text-decoration: underline;
+}
+
+input:invalid {
+    border-color: #ffcccc;
+    background-color: #fff8f8;
+}
+
+input:valid {
+    border-color: #ccffcc;
+    background-color: #f8fff8;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 3px #4CAF50;
+}
