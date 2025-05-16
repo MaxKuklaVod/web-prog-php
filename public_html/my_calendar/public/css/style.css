@@ -1,0 +1,195 @@
+/* public/css/style.css */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+header nav a:hover, header nav a.active {
+    background-color: #555;
+}
+header nav form {
+    margin-left: 20px;
+}
+header nav label {
+    margin-right: 5px;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* Формы */
+.task-form-section, .task-list-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.task-form-section h2, .task-list-section h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="datetime-local"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Важно для padding + width 100% */
+}
+
+form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+button[type="submit"], .button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+button[type="submit"]:hover, .button:hover {
+    background-color: #4cae4c;
+}
+.button.edit {
+    background-color: #f0ad4e;
+}
+.button.edit:hover {
+    background-color: #ec971f;
+}
+.button.complete {
+    background-color: #337ab7;
+    margin-left: 5px;
+}
+.button.complete:hover {
+    background-color: #286090;
+}
+
+
+/* Список задач */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.task-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.task-item h3 a {
+    color: #337ab7;
+    text-decoration: none;
+}
+.task-item h3 a:hover {
+    text-decoration: underline;
+}
+
+.task-item p {
+    margin: 5px 0;
+    color: #555;
+}
+.task-item p strong {
+    color: #333;
+}
+
+.task-item.completed {
+    border-left: 5px solid #5cb85c; /* Зеленая полоска для выполненных */
+    background-color: #f9f9f9;
+}
+.task-item.completed h3 a {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.task-item.overdue-item { /* Для ожидающих, но просроченных */
+    border-left: 5px solid #d9534f; /* Красная полоска */
+}
+
+.task-actions {
+    margin-top: 10px;
+}
+
+/* Сообщения */
+.message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.message.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+.message.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
