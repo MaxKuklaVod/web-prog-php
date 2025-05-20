@@ -1,48 +1,26 @@
 <?php
-// Конфигурация базы данных
-define('DB_HOST', 'localhost');
-define('DB_USER', 'm4xkukla22');
-define('DB_PASS', 'URAIEJWX');
-define('DB_NAME', 'm4xkukla22');
+// Файл: config.php
 
-// Настройки администратора
-define('ADMIN_LOGIN', 'admin');
-define('ADMIN_PASSWORD_HASH', sha1('cegthgfhjkm')); // Хеш пароля
+// Учетные данные администратора
+define('ADMIN_USERNAME', 'admin');
+define('ADMIN_PASSWORD_HASH', md5('sEcREt_PasSwoRD')); // Используем md5, как указано
 
-// Настройки сессии
-define('SESSION_TIMEOUT', 300); // 5 минут в секундах
+// Время бездействия для автоматического выхода (в секундах)
+define('SESSION_TIMEOUT_DURATION', 5 * 60); // 5 минут
 
-// Создаем подключение к базе данных
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// Файлы для хранения статистики
+define('STATS_FILE', __DIR__ . '/data/statistics.json');
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Инициализация файла статистики, если он не существует
+if (!file_exists(STATS_FILE)) {
+    $initial_data = [
+        'hits' => 0,
+        'unique_ips' => [],
+        'sessions_started' => 0
+    ];
+    if (!is_dir(__DIR__ . '/data')) {
+        mkdir(__DIR__ . '/data', 0755, true);
+    }
+    file_put_contents(STATS_FILE, json_encode($initial_data, JSON_PRETTY_PRINT));
 }
-
-// Создаем таблицы, если их нет
-$sql = "CREATE TABLE IF NOT EXISTS applications (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    topic VARCHAR(100) NOT NULL,
-    message TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)";
-
-$conn->query($sql);
-
-$sql = "CREATE TABLE IF NOT EXISTS statistics (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    ip_address VARCHAR(45) NOT NULL,
-    session_id VARCHAR(32) NOT NULL,
-    page_views INT DEFAULT 1,
-    last_activity TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE KEY unique_ip (ip_address),
-    UNIQUE KEY unique_session (session_id)
-)";
-
-$conn->query($sql);
-
-session_start();
 ?>
