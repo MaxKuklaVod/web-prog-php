@@ -1,81 +1,157 @@
 /* public/css/style.css */
-body {
-    font-family: sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+
+/* -------------------- */
+/* -- CSS Variables --- */
+/* -------------------- */
+:root {
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --color-primary: #007bff; /* Blue */
+    --color-primary-dark: #0056b3;
+    --color-secondary: #6c757d; /* Grey */
+    --color-success: #28a745; /* Green */
+    --color-success-dark: #1e7e34;
+    --color-danger: #dc3545; /* Red */
+    --color-warning: #ffc107; /* Yellow */
+    --color-warning-dark: #d39e00;
+    --color-info: #17a2b8; /* Teal */
+    --color-info-dark: #117a8b;
+
+    --color-light: #f8f9fa;
+    --color-dark: #343a40;
+    --color-white: #fff;
+    --color-muted: #6c757d;
+    --color-border: #dee2e6;
+    --color-text: #212529;
+    --color-text-light: #495057;
+
+    --body-bg: var(--color-light);
+    --body-color: var(--color-text);
+
+    --border-radius: 0.3rem;
+    --box-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    --box-shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+
+    --line-height-base: 1.6;
+    --font-size-base: 1rem; /* Assuming 16px browser default */
 }
 
+/* -------------------- */
+/* --- Global Resets -- */
+/* -------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    line-height: var(--line-height-base);
+    color: var(--body-color);
+    background-color: var(--body-bg);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------- */
+/* ------ Header ------ */
+/* -------------------- */
 header {
-    background: #333;
-    color: #fff;
+    background: var(--color-dark);
+    color: var(--color-light);
     padding: 1rem 0;
     text-align: center;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
 }
 
 header h1 {
     margin: 0;
     padding-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+header nav {
+    margin-top: 0.5rem;
 }
 
 header nav a {
-    color: #fff;
+    color: rgba(255,255,255,0.75);
     text-decoration: none;
     margin: 0 10px;
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: 0.5em 1em;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 header nav a:hover, header nav a.active {
-    background-color: #555;
+    background-color: var(--color-primary);
+    color: var(--color-white);
 }
 header nav form {
+    display: inline-block; /* Align form nicely with links */
     margin-left: 20px;
+    vertical-align: middle;
 }
 header nav label {
     margin-right: 5px;
+    font-size: 0.9em;
+}
+header nav input[type="date"] {
+    padding: 0.3em 0.6em;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-light);
 }
 
+/* -------------------- */
+/* ---- Main Content -- */
+/* -------------------- */
 main {
     padding: 20px;
-    max-width: 900px;
-    margin: 20px auto;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 960px;
+    margin: 0 auto; /* Removed top/bottom margin to rely on header/footer */
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #333;
-    color: #fff;
-    margin-top: 20px;
-}
-
-/* Формы */
-.task-form-section, .task-list-section {
+/* Content sections as cards */
+.task-form-section, .task-list-section, .task-detail-section {
     margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 25px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-sm);
 }
 
-.task-form-section h2, .task-list-section h2 {
+.task-form-section h2, .task-list-section h2, .task-detail-section h2 {
     margin-top: 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-dark);
 }
 
+/* -------------------- */
+/* ------- Forms ------ */
+/* -------------------- */
 form div {
-    margin-bottom: 15px;
+    margin-bottom: 1.25rem;
 }
 
 form label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-text-light);
 }
 
 form input[type="text"],
@@ -84,112 +160,257 @@ form input[type="number"],
 form select,
 form textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Важно для padding + width 100% */
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-white);
+    background-clip: padding-box;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+form input[type="text"]:focus,
+form input[type="datetime-local"]:focus,
+form input[type="number"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--color-primary);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
 form textarea {
-    min-height: 80px;
+    min-height: 100px;
     resize: vertical;
 }
 
-button[type="submit"], .button {
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
+/* -------------------- */
+/* ------ Buttons ----- */
+/* -------------------- */
+.button, button[type="submit"] {
     display: inline-block;
-    font-size: 1em;
+    font-weight: 400;
+    color: var(--color-white);
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 0.6rem 1.2rem;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-button[type="submit"]:hover, .button:hover {
-    background-color: #4cae4c;
+.button:hover, button[type="submit"]:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-white);
 }
+.button:focus, button[type="submit"]:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+}
+
 .button.edit {
-    background-color: #f0ad4e;
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+    color: var(--color-dark); /* Better contrast for yellow */
 }
 .button.edit:hover {
-    background-color: #ec971f;
+    background-color: var(--color-warning-dark);
+    border-color: var(--color-warning-dark);
+    color: var(--color-dark);
 }
+.button.edit:focus {
+     box-shadow: 0 0 0 0.2rem rgba(255,193,7,.5);
+}
+
 .button.complete {
-    background-color: #337ab7;
-    margin-left: 5px;
+    background-color: var(--color-info);
+    border-color: var(--color-info);
 }
 .button.complete:hover {
-    background-color: #286090;
+    background-color: var(--color-info-dark);
+    border-color: var(--color-info-dark);
+}
+.button.complete:focus {
+    box-shadow: 0 0 0 0.2rem rgba(23,162,184,.5);
+}
+
+.button.delete { /* Added a potential delete button style */
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+.button.delete:hover {
+    background-color: #c82333; /* Darker red */
+    border-color: #bd2130;
+}
+.button.delete:focus {
+     box-shadow: 0 0 0 0.2rem rgba(220,53,69,.5);
 }
 
 
-/* Список задач */
+/* -------------------- */
+/* ---- Task List ----- */
+/* -------------------- */
 .task-list {
     list-style: none;
     padding: 0;
 }
 
 .task-item {
-    background: #fff;
-    border: 1px solid #e0e0e0;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
     margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-sm);
+    transition: box-shadow 0.2s ease-in-out;
+    position: relative; /* For pseudo-element borders */
+    overflow: hidden; /* To contain pseudo-element */
+}
+.task-item:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.task-item::before { /* More modern status indicator */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: transparent; /* Default */
 }
 
 .task-item h3 {
     margin-top: 0;
     margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 500;
 }
 .task-item h3 a {
-    color: #337ab7;
+    color: var(--color-primary);
     text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
 .task-item h3 a:hover {
+    color: var(--color-primary-dark);
     text-decoration: underline;
 }
 
 .task-item p {
-    margin: 5px 0;
-    color: #555;
+    margin: 8px 0;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
 }
 .task-item p strong {
-    color: #333;
+    color: var(--color-text);
+    font-weight: 600;
 }
 
+.task-item.completed::before {
+    background-color: var(--color-success);
+}
 .task-item.completed {
-    border-left: 5px solid #5cb85c; /* Зеленая полоска для выполненных */
-    background-color: #f9f9f9;
+    background-color: #f0f9f3; /* Light green tint */
 }
 .task-item.completed h3 a {
     text-decoration: line-through;
-    color: #777;
+    color: var(--color-muted);
+}
+.task-item.completed h3 a:hover {
+    color: var(--color-secondary);
 }
 
-.task-item.overdue-item { /* Для ожидающих, но просроченных */
-    border-left: 5px solid #d9534f; /* Красная полоска */
+.task-item.overdue-item::before { /* For pending, but overdue */
+    background-color: var(--color-danger);
 }
+.task-item.overdue-item {
+    background-color: #fdf3f3; /* Light red tint */
+}
+/* If a task is completed AND overdue (e.g. completed late), completed status takes precedence */
+.task-item.completed.overdue-item::before {
+    background-color: var(--color-success); /* Green wins if completed */
+}
+.task-item.completed.overdue-item {
+    background-color: #f0f9f3;
+}
+
 
 .task-actions {
-    margin-top: 10px;
+    margin-top: 15px;
+    display: flex; /* Align buttons nicely */
+    gap: 10px; /* Space between buttons */
 }
 
-/* Сообщения */
-.message {
-    padding: 15px;
+/* Task Detail View Specifics */
+.task-detail-section .task-meta {
     margin-bottom: 20px;
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+}
+.task-detail-section .task-meta p {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+.task-detail-section .task-description {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+.task-detail-section .task-description h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--color-dark);
+}
+.task-detail-section .actions a { /* Buttons for actions */
+    margin-right: 10px;
+}
+
+/* -------------------- */
+/* ----- Messages ----- */
+/* -------------------- */
+.message {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    box-shadow: var(--box-shadow-sm);
 }
 .message.success {
-    background-color: #dff0d8;
-    color: #3c763d;
-    border: 1px solid #d6e9c6;
+    color: #155724; /* Darker text for success */
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 .message.error {
-    background-color: #f2dede;
-    color: #a94442;
-    border: 1px solid #ebccd1;
+    color: #721c24; /* Darker text for error */
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.message.info { /* For general info messages */
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+
+/* -------------------- */
+/* ------ Footer ------ */
+/* -------------------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--color-dark);
+    color: rgba(255,255,255,0.7);
+    margin-top: 40px;
+    font-size: 0.9em;
 }
